@@ -22,11 +22,23 @@ public class StudentManager {
     }
 
     public int addStudent(int id, String name, String lastName, int num){
-        if (this.students.get(id) == null) {
+        if (this.get(id) == null) {
             this.students.add(new Student(id, name, lastName, num));
             return 0;
         }
         return -1;
+    }
+
+    public int addStudent(Student student){
+        if (this.get(student.getId()) == null) {
+            this.students.add(student);
+            return 0;
+        }
+        return -1;
+    }
+
+    public void removeStudent(Student student){
+        this.students.remove(student);
     }
 
     public List<Student> getStudents () {

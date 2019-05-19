@@ -2,6 +2,7 @@ package pl.edu.agh.soa.model;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
+import javax.validation.constraints.Min;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import java.util.LinkedList;
@@ -11,7 +12,10 @@ public class Student {
     private int Id;
     private String FirstName;
     private String LastName;
+
+    @Min(value=1000, message="Student number must be greater than 1000")
     private int StudentNumber;
+
     private List<String> Courses;
     private String avatarFilename;
 
@@ -23,11 +27,11 @@ public class Student {
         this.Courses = new LinkedList<>();
         this.Courses.add("Kurs1");
         this.Courses.add("Kurs2");
-        this.avatarFilename = "/home/lukasz/Dokumenty/SOA/soap/soap-api/src/main/resources/img.jpg";
+        this.avatarFilename = "/home/lukasz/Dokumenty/SOA/backup/soap/soap-api/src/main/resources/img.jpg";
     }
 
     public Student(){
-        this(0, "Adam","Nowak",0);
+        this(0, "Adam","Nowak",1001);
     }
 
     public void setId (int id) {
