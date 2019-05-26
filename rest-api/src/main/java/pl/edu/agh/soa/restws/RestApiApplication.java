@@ -1,5 +1,7 @@
 package pl.edu.agh.soa.restws;
 
+import pl.edu.agh.soa.restauth.UserEndpoint;
+
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
@@ -11,6 +13,7 @@ public class RestApiApplication extends Application {
     public Set<Class<?>> getClasses() {
         HashSet h = new HashSet<Class<?>>();
         h.add(StudentRestApi.class);
+        h.add(UserEndpoint.class);
         return h;
     }
 }

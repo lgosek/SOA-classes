@@ -15,6 +15,7 @@ import java.net.URISyntaxException;
 
 @Path("/students")
 @Produces("application/Json")
+@Consumes("application/Json")
 public class StudentRestApi{
     @Inject
     private StudentManager studentManager;
@@ -62,7 +63,6 @@ public class StudentRestApi{
 
     @POST
     @Path("/")
-    @Consumes("application/Json")
     @ValidateOnExecution
     public Response addStudent(String json){
         ObjectMapper mapper = new ObjectMapper();
@@ -87,7 +87,6 @@ public class StudentRestApi{
 
     @PUT
     @Path("{id}")
-    @Consumes("application/Json")
     public Response editStudent(@PathParam("id") int id, String json){
         Student student = this.studentManager.get(id);
         if(student==null)

@@ -10,6 +10,9 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.8" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.8" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.8" />
+          <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt-api:0.10.5" />
+          <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt-impl:0.10.5" />
+          <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt-jackson:0.10.5" />
         </element>
       </element>
       <element id="directory" name="META-INF">
