@@ -96,6 +96,11 @@
             <artifactId>arquillian-protocol-servlet</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.9.8</version>
+        </dependency>
         <!--<dependency>-->
             <!--<groupId>pl.edu.agh.soa</groupId>-->
             <!--<artifactId>soap-model</artifactId>-->
