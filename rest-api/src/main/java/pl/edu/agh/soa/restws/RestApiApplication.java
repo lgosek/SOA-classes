@@ -1,5 +1,6 @@
 package pl.edu.agh.soa.restws;
 
+import pl.edu.agh.soa.restauth.JWTTokenNeededFilter;
 import pl.edu.agh.soa.restauth.UserEndpoint;
 
 import javax.ws.rs.ApplicationPath;
@@ -14,6 +15,7 @@ public class RestApiApplication extends Application {
         HashSet h = new HashSet<Class<?>>();
         h.add(StudentRestApi.class);
         h.add(UserEndpoint.class);
+        h.add(JWTTokenNeededFilter.class);
         return h;
     }
 }
