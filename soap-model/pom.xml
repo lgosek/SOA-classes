@@ -102,6 +102,17 @@
             <version>2.9.8</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>jaxrs-api</artifactId>
+            <version>3.0.10.Final</version>
+        </dependency>
+
         <!--<dependency>-->
             <!--<groupId>pl.edu.agh.soa</groupId>-->
             <!--<artifactId>soap-model</artifactId>-->

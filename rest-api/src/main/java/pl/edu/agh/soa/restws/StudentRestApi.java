@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiResponses;
 import org.apache.commons.io.FileUtils;
 import pl.edu.agh.soa.model.Student;
 import pl.edu.agh.soa.model.StudentManager;
+import pl.edu.agh.soa.model.proto.StudentProto;
 import pl.edu.agh.soa.restauth.JWTTokenNeeded;
 
 import javax.inject.Inject;
@@ -144,6 +145,29 @@ public class StudentRestApi{
         }
 
         return Response.status(Response.Status.NOT_FOUND).build();
+    }
+
+    @GET
+    @Path("/proto")
+    @Produces("application/protobuf")
+    @ApiOperation(value = "Get all Students in Protocol Buffers format")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successful retrieval of data"),
+            @ApiResponse(code = 404, message = "No students found")})
+    public Response getAllStudentsProto(){
+        StudentProto.StudentList.Builder listBuilder = StudentProto.StudentList.newBuilder();
+        for (Student s: studentManager.getStudents()) {
+            StudentProto.Student.Builder studentBuilder = StudentProto.Student.newBuilder()
+                    .setId(Integer.toString(s.getId()))
+                    .setFirstName(s.getFirstName())
+                    .setLastName(s.getLastName())
+                    .setStudentNumber(Integer.toString(s.getStudentNumber()))
+                    .setAvatarFilename(s.getAvatarFilename())
+                    .addAllCourses(s.getCourses());
+
+            listBuilder.addStudent(studentBuilder.build());
+        }
+        return Response.ok(listBuilder.build()).build();
     }
 
     @PUT

@@ -19,6 +19,8 @@
         <element id="file-copy" path="$MAVEN_REPOSITORY$/org/jboss/ws/jbossws-api/1.1.2.Final/jbossws-api-1.1.2.Final.jar" output-file-name="jbossws-api.jar" />
         <element id="file-copy" path="$MAVEN_REPOSITORY$/javax/annotation/jsr250-api/1.0/jsr250-api-1.0.jar" output-file-name="jsr250-api.jar" />
         <element id="file-copy" path="$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.9.8/jackson-annotations-2.9.8.jar" output-file-name="jackson-annotations.jar" />
+        <element id="file-copy" path="$MAVEN_REPOSITORY$/com/google/protobuf/protobuf-java/3.1.0/protobuf-java-3.1.0.jar" output-file-name="protobuf-java.jar" />
+        <element id="file-copy" path="$MAVEN_REPOSITORY$/org/jboss/resteasy/jaxrs-api/3.0.10.Final/jaxrs-api-3.0.10.Final.jar" output-file-name="jaxrs-api.jar" />
       </element>
       <element id="archive" name="soap-model.jar">
         <element id="module-output" name="soap-model" />

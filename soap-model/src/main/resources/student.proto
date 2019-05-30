@@ -1,0 +1,18 @@
+package pl.edu.agh.soa.protos;
+
+option java_package = "pl.edu.agh.soa.model.proto";
+option java_outer_classname = "StudentProto";
+
+message Student {
+    required string id = 1;
+    required string firstName = 2;
+    required string lastName = 3;
+    required string studentNumber = 4;
+    repeated string courses = 5;
+    required string avatarFilename = 6;
+}
+
+message StudentList {
+    repeated Student student = 1;
+}
+
