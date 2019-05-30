@@ -20,7 +20,7 @@ import java.util.List;
 
 
 public class RestConnector {
-    private final static String URLbase = "http://localhost:8080/rest-api/";
+    private final static String URLbase = "http://localhost:8080/rest-api/api/";
 
     public static void main (String[] args) {
 
