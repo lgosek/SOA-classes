@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="rest-api" />
+        <module name="rest-connector" />
         <module name="soap-api" />
         <module name="soap-connector" />
         <module name="soap-ear" />
@@ -17,6 +18,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="rest-api" target="1.8" />
+      <module name="rest-connector" target="1.8" />
       <module name="soap" target="1.7" />
       <module name="soap-api" target="1.8" />
       <module name="soap-connector" target="1.8" />

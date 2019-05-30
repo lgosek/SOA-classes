@@ -38,6 +38,7 @@
         <module>soap-ear</module>
         <module>soap-connector</module>
         <module>soap-model</module>
+        <module>rest-connector</module>
     </modules>
 
     <properties>

@@ -4,7 +4,9 @@ package pl.edu.agh.soa.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import java.util.LinkedList;
@@ -13,11 +15,16 @@ import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Student {
+    @NotNull
     private int Id;
+
+    @NotNull
     private String FirstName;
+    @NotNull
     private String LastName;
 
-    @Min(value=1000, message="Student number must be greater than 1000")
+    @Min(value = 100000, message = "Student number must be greater or equal than 100000")
+    @Max(value = 999999, message = "Student number must be smaller or equal than 999999")
     private int StudentNumber;
 
     private List<String> Courses;
@@ -35,7 +42,7 @@ public class Student {
     }
 
     public Student(){
-        this(0, "Adam","Nowak",1001);
+        this(0, "Adam","Nowak",111111);
     }
 
     public void setId (int id) {
@@ -75,34 +82,33 @@ public class Student {
         return -1;
     }
 
-    @JsonProperty("Id")
+    @XmlElement(name = "id")
     public int getId () {
         return Id;
     }
 
-    @JsonProperty("FirstName")
+    @XmlElement(name = "firstName")
     public String getFirstName () {
         return FirstName;
     }
 
-    @JsonProperty("LastName")
+    @XmlElement(name = "lastName")
     public String getLastName () {
         return LastName;
     }
 
-    @JsonProperty("StudentNumber")
+    @XmlElement(name = "studentNumber")
     public int getStudentNumber () {
         return StudentNumber;
     }
 
-    @XmlElementWrapper(name = "Courses")
-    @XmlElement(name = "CourseName")
-    @JsonProperty("Courses")
+    @XmlElementWrapper(name = "courses")
+    @XmlElement(name = "courseName")
     public List<String> getCourses () {
         return Courses;
     }
 
-    @JsonProperty("AvatarFilename")
+    @XmlElement(name = "avatarFilename")
     public String getAvatarFilename () {
         return AvatarFilename;
     }

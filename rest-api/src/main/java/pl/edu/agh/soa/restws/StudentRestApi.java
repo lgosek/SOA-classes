@@ -9,6 +9,7 @@ import pl.edu.agh.soa.model.StudentManager;
 import pl.edu.agh.soa.restauth.JWTTokenNeeded;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.validation.executable.ValidateOnExecution;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -118,7 +119,7 @@ public class StudentRestApi{
             fileContent = FileUtils.readFileToByteArray(new File(studentManager.get(id).getAvatarFilename()));
             String encodedString = Base64.getEncoder().encodeToString(fileContent);
 
-            node.put("EncodedAvatar", encodedString);
+            node.put("encodedAvatar", encodedString);
             return Response.ok(node.toString()).build();
         } catch (Exception e) {
             e.printStackTrace();
@@ -150,7 +151,7 @@ public class StudentRestApi{
         //ObjectMapper mapper = new ObjectMapper();
         String returnJson;
         try {
-            returnJson = mapper.writeValueAsString(this.studentManager);
+            returnJson = mapper.writeValueAsString(this.studentManager.getStudents());
             return Response.ok(returnJson).build();
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -164,10 +165,9 @@ public class StudentRestApi{
     @Path("/")
     @ValidateOnExecution
     @JWTTokenNeeded
-    public Response addStudent(String json){
+    public Response addStudent(@Valid Student student){
         //ObjectMapper mapper = new ObjectMapper();
         try {
-            Student student = mapper.readValue(json, Student.class);
             if(this.studentManager.addStudent(student)==0){
                 //return Response.created(new URI("Added student")).build();
                 return Response.created(new URI("http://localhost:8080/rest-api/students/"+Integer.toString(student
@@ -186,14 +186,12 @@ public class StudentRestApi{
     @PUT
     @Path("{id}")
     @JWTTokenNeeded
-    public Response editStudent(@PathParam("id") int id, String json){
+    public Response editStudent(@PathParam("id") int id, @Valid Student newStudent){
         Student student = this.studentManager.get(id);
         if(student==null)
             return Response.status(Response.Status.NOT_FOUND).build();
         //ObjectMapper mapper = new ObjectMapper();
-        Student newStudent;
         try {
-            newStudent = mapper.readValue(json, Student.class);
             if(student.getId()!=newStudent.getId() && this.studentManager.get(newStudent.getId())!=null)
                 return Response.status(Response.Status.CONFLICT).build();
             this.studentManager.removeStudent(student);
