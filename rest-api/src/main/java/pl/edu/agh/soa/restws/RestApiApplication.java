@@ -1,6 +1,7 @@
 package pl.edu.agh.soa.restws;
 
 import io.swagger.jaxrs.config.BeanConfig;
+import pl.edu.agh.soa.model.proto.StudentProtocMessageBodyProvider;
 import pl.edu.agh.soa.restauth.JWTTokenNeededFilter;
 import pl.edu.agh.soa.restauth.UserEndpoint;
 
@@ -34,6 +35,7 @@ public class RestApiApplication extends Application {
         h.add(StudentRestApi.class);
         h.add(UserEndpoint.class);
         h.add(JWTTokenNeededFilter.class);
+        h.add(StudentProtocMessageBodyProvider.class);
         h.add(io.swagger.jaxrs.listing.ApiListingResource.class);
         h.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
         return h;
