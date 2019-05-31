@@ -7,6 +7,8 @@ import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import pl.edu.agh.soa.model.Student;
+import pl.edu.agh.soa.model.proto.StudentProto;
+import pl.edu.agh.soa.model.proto.StudentProtocMessageBodyProvider;
 
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.GenericType;
@@ -24,7 +26,7 @@ public class RestConnector {
 
     public static void main (String[] args) {
 
-        ResteasyClient client = new ResteasyClientBuilder().build();
+        ResteasyClient client = new ResteasyClientBuilder().register(new StudentProtocMessageBodyProvider()).build();
 
 //      list of students
 
@@ -39,6 +41,7 @@ public class RestConnector {
             System.out.println(s.getFirstName() + " " + s.getLastName());
         }
         response.close();
+        System.out.println("");
 
 //        avatar
 
@@ -97,6 +100,14 @@ public class RestConnector {
             e.printStackTrace();
         }
 
+//        protocol buffer test
+
+        response = client.target(URLbase + "students/proto/").request().get();
+        StudentProto.StudentList list = response.readEntity(StudentProto.StudentList.class);
+
+        for (StudentProto.Student stud: list.getStudentList()) {
+            System.out.println(stud.getFirstName() + " " + stud.getLastName());
+        }
 
         client.close();
 
