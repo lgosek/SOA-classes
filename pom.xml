@@ -39,6 +39,7 @@
         <module>soap-connector</module>
         <module>soap-model</module>
         <module>rest-connector</module>
+        <module>soap-jpa</module>
     </modules>
 
     <properties>

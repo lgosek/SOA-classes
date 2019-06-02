@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/soap-connector/soap-connector.iml" filepath="$PROJECT_DIR$/soap-connector/soap-connector.iml" />
       <module fileurl="file://$PROJECT_DIR$/soap-ear/soap-ear.iml" filepath="$PROJECT_DIR$/soap-ear/soap-ear.iml" />
       <module fileurl="file://$PROJECT_DIR$/soap-api/soap-ejb.iml" filepath="$PROJECT_DIR$/soap-api/soap-ejb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/soap-jpa/soap-jpa.iml" filepath="$PROJECT_DIR$/soap-jpa/soap-jpa.iml" />
       <module fileurl="file://$PROJECT_DIR$/soap-model/soap-model.iml" filepath="$PROJECT_DIR$/soap-model/soap-model.iml" />
     </modules>
   </component>

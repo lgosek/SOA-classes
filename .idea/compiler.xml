@@ -12,6 +12,7 @@
         <module name="soap-connector" />
         <module name="soap-ear" />
         <module name="soap-ejb" />
+        <module name="soap-jpa" />
         <module name="soap-model" />
         <module name="soap-web" />
       </profile>
@@ -24,6 +25,7 @@
       <module name="soap-connector" target="1.8" />
       <module name="soap-ear" target="1.7" />
       <module name="soap-ejb" target="1.8" />
+      <module name="soap-jpa" target="1.7" />
       <module name="soap-model" target="1.7" />
       <module name="soap-web" target="1.7" />
     </bytecodeTargetLevel>
