@@ -3,6 +3,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="ejb" url="file://$PROJECT_DIR$/soap-api" />
     <file type="javaeeApplication" url="file://$PROJECT_DIR$/soap-ear" />
+    <file type="jpa" url="file://$PROJECT_DIR$/soap-api/src/test/resources/META-INF/test-persistence.xml" />
     <file type="web" url="file://$PROJECT_DIR$/rest-api" />
   </component>
   <component name="MavenProjectsManager">

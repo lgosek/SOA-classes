@@ -1,6 +1,7 @@
 package pl.edu.agh.soa.jpa;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -16,7 +17,7 @@ public class Student {
             name = "StudentCourses",
             joinColumns = @JoinColumn(name = "studentId", referencedColumnName = "studentId"),
             inverseJoinColumns = @JoinColumn(name = "courseId", referencedColumnName = "courseId"))
-    private Set<Course> courses;
+    private Set<Course> courses = new HashSet<>();
 
     @JoinColumn(name = "studentInfoId", unique = true)
     @OneToOne(cascade = CascadeType.ALL)

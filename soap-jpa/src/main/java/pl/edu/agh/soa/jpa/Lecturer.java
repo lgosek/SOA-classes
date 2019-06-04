@@ -1,6 +1,7 @@
 package pl.edu.agh.soa.jpa;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -17,9 +18,10 @@ public class Lecturer {
     @Column(name = "lastName")
     private String lastName;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "courseID")
-    private Set<Course> courses;
+    @OneToMany(
+            mappedBy = "lecturer",
+            cascade = CascadeType.ALL)
+    private Set<Course> courses = new HashSet<>();
 
     public Lecturer () {
     }

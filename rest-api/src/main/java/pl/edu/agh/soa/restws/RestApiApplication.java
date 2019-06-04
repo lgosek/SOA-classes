@@ -33,6 +33,7 @@ public class RestApiApplication extends Application {
     public Set<Class<?>> getClasses() {
         HashSet h = new HashSet<Class<?>>();
         h.add(StudentRestApi.class);
+        h.add(RestApiJpa.class);
         h.add(UserEndpoint.class);
         h.add(JWTTokenNeededFilter.class);
         h.add(StudentProtocMessageBodyProvider.class);

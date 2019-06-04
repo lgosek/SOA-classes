@@ -13,9 +13,8 @@ public class Course {
     @Column(name = "courseName")
     private String courseName;
 
-    @OneToMany(
-            mappedBy = "lecturerId",
-            cascade = CascadeType.ALL)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "lecturerId")
     private Lecturer lecturer;
 
     public Course () {
