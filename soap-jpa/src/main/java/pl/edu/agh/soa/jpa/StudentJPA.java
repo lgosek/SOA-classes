@@ -6,13 +6,13 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Students")
-public class Student {
+public class StudentJPA {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "studentId")
     private Integer id;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "StudentCourses",
             joinColumns = @JoinColumn(name = "studentId", referencedColumnName = "studentId"),
@@ -20,10 +20,10 @@ public class Student {
     private Set<Course> courses = new HashSet<>();
 
     @JoinColumn(name = "studentInfoId", unique = true)
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private StudentInfo studentInfo;
 
-    public Student () {
+    public StudentJPA () {
     }
 
     public Integer getId () {
@@ -49,5 +49,9 @@ public class Student {
 
     public void setStudentInfo (StudentInfo studentInfo) {
         this.studentInfo = studentInfo;
+    }
+
+    public void addCourse (Course course){
+        this.courses.add(course);
     }
 }

@@ -13,7 +13,7 @@ public class Course {
     @Column(name = "courseName")
     private String courseName;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "lecturerId")
     private Lecturer lecturer;
 

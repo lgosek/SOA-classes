@@ -1,5 +1,7 @@
 package pl.edu.agh.soa.jpa;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +22,8 @@ public class Lecturer {
 
     @OneToMany(
             mappedBy = "lecturer",
-            cascade = CascadeType.ALL)
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER)
     private Set<Course> courses = new HashSet<>();
 
     public Lecturer () {
@@ -50,11 +53,16 @@ public class Lecturer {
         this.lastName = lastName;
     }
 
+    @JsonIgnore
     public Set<Course> getCourses () {
         return courses;
     }
 
     public void setCourses (Set<Course> courses) {
         this.courses = courses;
+    }
+
+    public void addCourse (Course course){
+        this.courses.add(course);
     }
 }
