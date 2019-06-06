@@ -310,7 +310,7 @@ public class StudentRestApi{
     @DELETE
     @Path("{id}")
     @JWTTokenNeeded
-    @ApiOperation(value = "Delete Student specific id")
+    @ApiOperation(value = "Delete Student with specific id")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Student deleted successfully"),
             @ApiResponse(code = 401, message = "Authorization error (no JWT token or token expired)"),

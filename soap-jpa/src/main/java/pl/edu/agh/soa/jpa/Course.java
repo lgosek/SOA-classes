@@ -1,5 +1,7 @@
 package pl.edu.agh.soa.jpa;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,7 +15,8 @@ public class Course {
     @Column(name = "courseName")
     private String courseName;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     @JoinColumn(name = "lecturerId")
     private Lecturer lecturer;
 

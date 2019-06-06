@@ -1,5 +1,7 @@
 package pl.edu.agh.soa.jpa;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +14,8 @@ public class StudentJPA {
     @Column(name = "studentId")
     private Integer id;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     @JoinTable(
             name = "StudentCourses",
             joinColumns = @JoinColumn(name = "studentId", referencedColumnName = "studentId"),

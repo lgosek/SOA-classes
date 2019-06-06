@@ -2,7 +2,6 @@ package pl.edu.agh.soa.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -16,29 +15,29 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Student {
     @NotNull
-    private int Id;
+    private int id;
 
     @NotNull
-    private String FirstName;
+    private String firstName;
     @NotNull
-    private String LastName;
+    private String lastName;
 
     @Min(value = 100000, message = "Student number must be greater or equal than 100000")
     @Max(value = 999999, message = "Student number must be smaller or equal than 999999")
-    private int StudentNumber;
+    private int studentNumber;
 
-    private List<String> Courses;
-    private String AvatarFilename;
+    private List<String> courses;
+    private String avatarFilename;
 
     public Student(int id, String name, String lastName, int num){
-        this.Id = id;
-        this.FirstName = name;
-        this.LastName = lastName;
-        this.StudentNumber = num;
-        this.Courses = new LinkedList<>();
-        this.Courses.add("Kurs1");
-        this.Courses.add("Kurs2");
-        this.AvatarFilename = "/home/lukasz/Dokumenty/SOA/backup/soap/soap-api/src/main/resources/img.jpg";
+        this.id = id;
+        this.firstName = name;
+        this.lastName = lastName;
+        this.studentNumber = num;
+        this.courses = new LinkedList<>();
+        this.courses.add("Kurs1");
+        this.courses.add("Kurs2");
+        this.avatarFilename = "/home/lukasz/Dokumenty/SOA/backup/soap/rest-api/src/main/resources/img.png";
     }
 
     public Student(){
@@ -46,37 +45,37 @@ public class Student {
     }
 
     public void setId (int id) {
-        this.Id = id;
+        this.id = id;
     }
 
     public void setCourses (List<String> courses) {
-        this.Courses = courses;
+        this.courses = courses;
     }
 
     public void setAvatarFilename (String avatarFilename) {
-        this.AvatarFilename = avatarFilename;
+        this.avatarFilename = avatarFilename;
     }
 
     public void setFirstName (String FirstName) {
-        this.FirstName = FirstName;
+        this.firstName = FirstName;
     }
 
     public void setLastName (String LastName) {
-        this.LastName = LastName;
+        this.lastName = LastName;
     }
 
     public void setStudentNumber (int StudentNumber) {
-        this.StudentNumber = StudentNumber;
+        this.studentNumber = StudentNumber;
     }
 
     public void addCourse (String courseName){
-        if (!this.Courses.contains(courseName))
-            this.Courses.add(courseName);
+        if (!this.courses.contains(courseName))
+            this.courses.add(courseName);
     }
 
     public int deleteCourse (String courseName){
-        if (this.Courses.contains(courseName)) {
-            this.Courses.remove(courseName);
+        if (this.courses.contains(courseName)) {
+            this.courses.remove(courseName);
             return 0;
         }
         return -1;
@@ -84,32 +83,32 @@ public class Student {
 
     @XmlElement(name = "id")
     public int getId () {
-        return Id;
+        return id;
     }
 
     @XmlElement(name = "firstName")
     public String getFirstName () {
-        return FirstName;
+        return firstName;
     }
 
     @XmlElement(name = "lastName")
     public String getLastName () {
-        return LastName;
+        return lastName;
     }
 
     @XmlElement(name = "studentNumber")
     public int getStudentNumber () {
-        return StudentNumber;
+        return studentNumber;
     }
 
     @XmlElementWrapper(name = "courses")
-    @XmlElement(name = "courseName")
+//    @XmlElement(name = "courseName")
     public List<String> getCourses () {
-        return Courses;
+        return courses;
     }
 
     @XmlElement(name = "avatarFilename")
     public String getAvatarFilename () {
-        return AvatarFilename;
+        return avatarFilename;
     }
 }

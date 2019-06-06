@@ -59,7 +59,7 @@ public class RestConnector {
 
             byte[] fileContent = Base64.getDecoder().decode(encodedAvatar);
 
-            FileUtils.writeByteArrayToFile(new File("/home/lukasz/Dokumenty/SOA/backup/soap/rest-connector/src/main/resources/avatar.jpg"), fileContent);
+            FileUtils.writeByteArrayToFile(new File("/home/lukasz/Dokumenty/SOA/backup/soap/rest-connector/src/main/resources/avatar.png"), fileContent);
 
         } catch (IOException e) {
             e.printStackTrace();

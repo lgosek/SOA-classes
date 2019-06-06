@@ -1,6 +1,7 @@
 package pl.edu.agh.soa.jpa;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -22,8 +23,9 @@ public class Lecturer {
 
     @OneToMany(
             mappedBy = "lecturer",
-            cascade = CascadeType.ALL,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
             fetch = FetchType.EAGER)
+    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     private Set<Course> courses = new HashSet<>();
 
     public Lecturer () {

@@ -172,5 +172,29 @@ public class RestApiJpa {
         }
         return Response.status(Response.Status.BAD_REQUEST).build();
     }
+
+
+    @DELETE
+    @Path("{id}")
+    @JWTTokenNeeded
+    @ApiOperation(value = "Delete Student with specific id")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Student deleted successfully"),
+            @ApiResponse(code = 401, message = "Authorization error (no JWT token or token expired)"),
+            @ApiResponse(code = 404, message = "Student with given id not found")})
+    public Response deleteStudent(@PathParam("id") int id){
+        try {
+            userTransaction.begin();
+            StudentJPA student = entityManager.find(StudentJPA.class, id);
+            if(student==null)
+                return Response.status(Response.Status.NOT_FOUND).build();
+            entityManager.remove(student);
+            userTransaction.commit();
+            return Response.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+    }
 }
 
